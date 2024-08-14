@@ -23,6 +23,10 @@ public class FacturaService {
         Double totalFactura = 0.0;
         for (Partida partida : factura.getPartidas()) {
 
+            if (partida.getNombreArticulo() == null || partida.getNombreArticulo().isEmpty()) {
+                throw new RuntimeException("No se especifico el nombre del articulo");
+            }
+
             partida.setFactura(factura);
 
             Integer cantidad = partida.getCantidad();
